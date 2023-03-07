@@ -27,3 +27,4 @@ for x in set(list1) :
     print(f"{x} - {count}")
     
 print("END")
+print("END")
