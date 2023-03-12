@@ -1,30 +1,32 @@
 '''
-Write the function mostFrequentLetters(s), that takes a string s, and ignoring case 
-(so "A" and "a" are treated the same), returns a lowercase string containing the letters of s in most 
-frequently used order. (In the event of a tie between two letters, follow alphabetic order.)
+5.Write a function most frequent letters(s), that takes a string s and ignoring case
+(so "A" and "a" are treated the same),returns a lowercase string containing the letters of s in most frequently used order. (In the event of a tie between two letters, follow alphabetic order.)
 Eg - "We Attack at Dawn" is input. Output should be 'atwcdekn'
 Do not use dictionaries. Try to use string built in functions.
 '''
 
-#PROGRAM :
+#PROGRAM : 
 
-s = "We Attack at Dawn"
+word = 'we Attack at dawn'
+lettercount = [0]*26
+finalStr = ''
+a = 0
 
-s = s.lower()
-s = s.replace(' ','')
+word = word.lower()
+word = word.replace(' ','')
 
-unique_letters = sorted(set(s))
+unique = set(word)
+unique = list(unique)
+unique.sort()
 
-letter_counts = [0] * len(unique_letters)
+for y in unique :
 
-for i , letter in enumerate(unique_letters) :
+    lettercount[a] = unique.count(f'{y}') 
+    a+=1
 
-    letter_counts[i] = s.count(letter)
+for z in range(len(unique)) :
 
-letter_counts_tuples = list(zip(unique_letters, letter_counts))
+    finalStr += str(unique[lettercount.index(max(lettercount))])
+    lettercount[lettercount.index(max(lettercount))] = 0
 
-sorted_letter_counts = sorted(letter_counts_tuples, key=lambda x: (-x[1], x[0]))
-
-result = ''.join([x[0] for x in sorted_letter_counts])
-
-print(result)
+print(finalStr)

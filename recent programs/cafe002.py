@@ -25,10 +25,10 @@ quantityInWords = ['one','two','three','four','five','six','seven','eight','nine
 quantityInDigits = ['1','2','3','4','5','6','7','8','9']
 
 #getting customer input and calculating the sold item
-def CustomerInput(customerInput):
+def CustomerInput(customerInput) :
     
     list1 = list(customerInput.split())
-    global quantities 
+    totalCost = 0
     quantities = []
     
     #taking the input and filtering valuse
@@ -52,21 +52,29 @@ def CustomerInput(customerInput):
         itemStock[i] -= quantities[i]
         itemSales[i] += quantities[i]
 
+        if quantities[i] != 0 :
+
+            print(f'{itemsInCafe[i].capitalize()} Cost = {itemPrice[i] * quantities[i]}') 
+
+        totalCost += (itemPrice[i] * quantities[i])
+
         #stock refill checking condition
         if itemStock[i] <= (itemStockRefill[i] * 0.2):
         
             itemStock[i] = itemStockRefill[i]
             print(f"{itemsInCafe[i]} Refilled....")
             
+    print(f'Total bill = {totalCost}')
+    
 #displaying top 3 sales and profit item
 def topItemsCategory():
+
+    a = 0
 
     #finding the profit for all items
     for x in range(len(itemSales)) :
         topSale[x] = itemSales[x]
         topProfit[x] = itemSales[x] * itemProfit[x]
-    
-    a = tuple(topProfit)
 
     print("\nTop 3 Sales items")
     
@@ -76,8 +84,9 @@ def topItemsCategory():
         if i < 3 :
 
             #printing the top sales
-            print(f"{i+1} - {max(topSale)} - {itemsInCafe[itemSales.index(max(topSale))]}")
-            topSale.remove(max(topSale))
+            a = topSale.index(max(topSale))
+            print(f"{i+1} - {max(topSale)} - {itemsInCafe[a]}")
+            topSale[a] = 0
             continue
 
         elif i == 3 :
@@ -85,22 +94,25 @@ def topItemsCategory():
             print("\nTop 3 Profit items")
 
         #printing the top profit
-        print(f"{i-2} - {max(topProfit)} - {itemsInCafe[a.index(max(topProfit))]}")
-        topProfit.remove(max(topProfit))
+        a = topProfit.index(max(topProfit))
+        print(f"{i-2} - {max(topProfit)} - {itemsInCafe[a]}")
+        topProfit[a] = 0
 
 def main() :
 
     print("\t...Welcome to the cafe..")
     print("(Here are the items that we can served)")
+    banner = ''
 
     #displaying items
     for item in range(len(itemsInCafe)) :
 
-        print(f"{item+1}. {itemsInCafe[item].upper()}")
+        banner += '\n' + str(item+1) + ' - ' + str(itemsInCafe[item].upper())
 
     #checking time duration
     while (time.time() - startTime) < timeLimit :    
 
+        print(banner)
         customerInput = input("Enter ur order... : ")
 
         #calling function to take customer input
