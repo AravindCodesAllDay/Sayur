@@ -11,16 +11,14 @@ word = 'we Attack at dawn'
 lettercount = [0]*26
 finalStr = ''
 
-word = word.lower()
-word = word.replace(' ','')
+word = (word.lower()).replace(' ','')
 
 unique = sorted(set(word))
-unique = list(unique)
 
-for a,letter in enumerate(unique) :
+for i,letter in enumerate(unique) :
 
-    lettercount[a] = unique.count(f'{letter}')
-
+    lettercount[i] = word.count(letter)
+    
 for z in range(len(unique)) :
 
     finalStr += str(unique[lettercount.index(max(lettercount))])

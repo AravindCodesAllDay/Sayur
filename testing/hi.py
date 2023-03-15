@@ -82,6 +82,7 @@ def topItemsCategory():
     print("\nTop 3 Sales items")
     for i in sortTopSale[0:3]:
         print(f'{itemsInCafeList[i[0]]}')
+        
     print("\nTop 3 Profit items")
     for y in sortTopProf[0:3]:
         print(f'{itemsInCafeList[y[0]]}')
