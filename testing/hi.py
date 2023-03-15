@@ -9,7 +9,7 @@ if the supply reaches 20% of the stock. Print the 3 items with highest sales, an
 #importing time
 import time
 startTime = time.time()
-timeLimit = 30
+timeLimit = 10
 
 #initialization
 itemsInCafe = ['coffee','tea','cappucino','cookie']
@@ -74,14 +74,16 @@ def topItemsCategory():
     
     itemsInCafeList = list(enumerate(itemsInCafe))
     topSale = list(enumerate(itemSales))
-    topProfit = list(enumerate(topProfit))
+    topProf = list(enumerate(topProfit))
 
     sortTopSale = sorted(topSale,key = lambda x:x[1],reverse=True)
-    sortTopProfit = sorted(topProfit,key = lambda x:x[1],reverse=True)
+    sortTopProf = sorted(topProf,key = lambda x:x[1],reverse=True)
 
+    print("\nTop 3 Sales items")
     for i in sortTopSale[0:3]:
         print(f'{itemsInCafeList[i[0]]}')
-    for y in sortTopProfit[0:3]:
+    print("\nTop 3 Profit items")
+    for y in sortTopProf[0:3]:
         print(f'{itemsInCafeList[y[0]]}')
 
 def main() :

@@ -10,19 +10,16 @@ Do not use dictionaries. Try to use string built in functions.
 word = 'we Attack at dawn'
 lettercount = [0]*26
 finalStr = ''
-a = 0
 
 word = word.lower()
 word = word.replace(' ','')
 
-unique = set(word)
+unique = sorted(set(word))
 unique = list(unique)
-unique.sort()
 
-for y in unique :
+for a,letter in enumerate(unique) :
 
-    lettercount[a] = unique.count(f'{y}') 
-    a+=1
+    lettercount[a] = unique.count(f'{letter}')
 
 for z in range(len(unique)) :
 
