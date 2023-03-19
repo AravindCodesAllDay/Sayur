@@ -79,25 +79,26 @@ def CustomerInput(customerInput) :
 
         if quantities[i] != 0 :
 
-            print(f'{itemsInCafe[i].capitalize()} Cost = {itemPrice[i] * quantities[i]}') 
+            print(f'{items.capitalize()} Cost = {cafe[items][0] * quantities[i]}') 
 
-        totalCost += (itemPrice[i] * quantities[i])
+        totalCost += (cafe[items][0] * quantities[i])
 
         #stock refill checking condition
-        if itemStock[i] <= (itemStockRefill[i] * 0.2):
+        if cafe[items][2] <= (cafe[items][4] * 0.2):
         
-            itemStock[i] = itemStockRefill[i]
-            print(f"{itemsInCafe[i]} Refilled....")
+            cafe[items][2] = cafe[items][4]
+            print(f"{items} Refilled....")
             
     print(f'Total bill = {totalCost}')
     
 #displaying top 3 sales and profit item
 def topItemsCategory():
 
-    for x in range(len(itemSales)) :
-        topProfit[x] = itemSales[x] * itemProfit[x]
+    for x in enumerate(cafe.keys()) :
+        topProfit[x] = cafe[x][2] * cafe[x][1]
+        sale = 
     
-    itemsInCafeList = list(enumerate(itemsInCafe))
+    itemsInCafeList = list(enumerate(cafe.keys()))
     topSale = list(enumerate(itemSales))
     topProf = list(enumerate(topProfit))
 
