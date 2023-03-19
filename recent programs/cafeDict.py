@@ -12,12 +12,37 @@ startTime = time.time()
 timeLimit = 10
 
 #initialization
-itemsInCafe = ['coffee','tea','cappucino','cookie']
-itemPrice = [40,35,50,30]
-itemProfit = [12,10,14,5]
-itemStock = [30,30,20,40]
-itemStockRefill = [30,30,20,40]
-itemSales = [0,0,0,0]
+cafe = {
+    'coffee' : {
+        'price' : 40,
+        'profit' : 12,
+        'stock' : 30,
+        'sales' : 0,
+        'refill' : 30
+    },
+    'tea' : {
+        'price' : 35,
+        'profit' : 10,
+        'stock' : 30,
+        'sales' : 0,
+        'refill' : 30
+    },
+    'cappucino' : {
+        'price' : 50,
+        'profit' : 14,
+        'stock' : 20,
+        'sales' : 0,
+        'refill' : 20
+    },
+    'cookie' : {
+        'price' : 30,
+        'profit' : 5,
+        'stock' : 40,
+        'sales' : 0,
+        'refill' : 40
+    }
+}
+
 topSale = [0,0,0,0]
 topProfit = [0,0,0,0]
 
@@ -32,11 +57,11 @@ def CustomerInput(customerInput) :
     quantities = []
     
     #taking the input and filtering valuse
-    for i in range(len(itemsInCafe)) :
+    for i,items in enumerate(cafe.keys()) :
         
-        if itemsInCafe[i] in list1:
+        if i in list1:
             
-            index = (list1.index(itemsInCafe[i])) - 1
+            index = (list1.index(items)) - 1
             
             for x in range(len(quantityInWords)) :
                 
@@ -49,8 +74,8 @@ def CustomerInput(customerInput) :
             quantities.insert(i,0)
 
         #updating the stock
-        itemStock[i] -= quantities[i]
-        itemSales[i] += quantities[i]
+        cafe[items][2] -= quantities[i]
+        cafe[items][3] += quantities[i]
 
         if quantities[i] != 0 :
 
@@ -94,9 +119,9 @@ def main() :
     banner = ''
 
     #displaying items
-    for item in range(len(itemsInCafe)) :
+    for i,item in enumerate(cafe.keys()) :
 
-        banner += '\n' + str(item+1) + ' - ' + str(itemsInCafe[item].upper())
+        banner += '\n' + str(item+1) + ' - ' + str(item.upper())
 
     #checking time duration
     while (time.time() - startTime) < timeLimit :    
@@ -111,9 +136,9 @@ def main() :
     topItemsCategory()
 
     #refilling the stock
-    for z in range(len(itemsInCafe)) :
+    for z in cafe.keys() :
             
-        itemStock[z] = itemStockRefill[z]
+        cafe[z][2] = cafe[z][4]
         
     print("All items Refilled....")
 

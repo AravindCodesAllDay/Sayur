@@ -38,7 +38,7 @@ cafe = {
 
 cafe.update({"cake":{'price':40,'profit':10,'stock':25,'sales':0}})
 
-print(cafe)
+print(cafe.keys())
 
 
 
