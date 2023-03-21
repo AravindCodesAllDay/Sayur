@@ -43,8 +43,8 @@ cafe = {
     }
 }
 
-topSale = [0,0,0,0]
-topProfit = [0,0,0,0]
+topSale = []
+topProfit = []
 
 quantityInWords = ['one','two','three','four','five','six','seven','eight','nine']
 quantityInDigits = ['1','2','3','4','5','6','7','8','9']
@@ -74,19 +74,19 @@ def CustomerInput(customerInput) :
             quantities.insert(i,0)
 
         #updating the stock
-        cafe[items][2] -= quantities[i]
-        cafe[items][3] += quantities[i]
+        cafe[items]['stock'] -= quantities[i]
+        cafe[items]['sales'] += quantities[i]
 
         if quantities[i] != 0 :
 
             print(f'{items.capitalize()} Cost = {cafe[items][0] * quantities[i]}') 
 
-        totalCost += (cafe[items][0] * quantities[i])
+        totalCost += (cafe[items]['price'] * quantities[i])
 
         #stock refill checking condition
-        if cafe[items][2] <= (cafe[items][4] * 0.2):
+        if cafe[items]['stock'] <= (cafe[items]['refill'] * 0.2):
         
-            cafe[items][2] = cafe[items][4]
+            cafe[items]['stock'] = cafe[items]['refill']
             print(f"{items} Refilled....")
             
     print(f'Total bill = {totalCost}')
@@ -94,24 +94,24 @@ def CustomerInput(customerInput) :
 #displaying top 3 sales and profit item
 def topItemsCategory():
 
-    for x in enumerate(cafe.keys()) :
-        topProfit[x] = cafe[x][2] * cafe[x][1]
-        sale = 
+    for x in cafe.keys() :
+        topProfit.append(cafe[x]['stock'] * cafe[x]['profit'])
+        topSale.append(cafe[x]['stock'])
     
     itemsInCafeList = list(enumerate(cafe.keys()))
-    topSale = list(enumerate(itemSales))
+    topSal = list(enumerate(topSale))
     topProf = list(enumerate(topProfit))
 
-    sortTopSale = sorted(topSale,key = lambda x:x[1],reverse=True)
+    sortTopSale = sorted(topSal,key = lambda x:x[1],reverse=True)
     sortTopProf = sorted(topProf,key = lambda x:x[1],reverse=True)
 
     print("\nTop 3 Sales items")
-    for i,a in enumerate(sortTopSale[0:3]):
-        print(f'{i+1}-{itemsInCafeList[a[0]][1]}-{a[1]}')
+    for x in sortTopSale[0:3] :
+        print(f'{itemsInCafeList[x[1]][1]}-{x}')
         
     print("\nTop 3 Profit items")
-    for y,b in enumerate(sortTopProf[0:3]):
-        print(f'{y+1}-{itemsInCafeList[b[0]][1]}-{b[1]}')
+    for y in sortTopProf[0:3] :
+        print(f'{itemsInCafeList[y[1]][1]}-{y}')
 
 def main() :
 
@@ -122,7 +122,7 @@ def main() :
     #displaying items
     for i,item in enumerate(cafe.keys()) :
 
-        banner += '\n' + str(item+1) + ' - ' + str(item.upper())
+        banner += '\n' + str(i+1) + ' - ' + str(item.upper())
 
     #checking time duration
     while (time.time() - startTime) < timeLimit :    
@@ -139,7 +139,7 @@ def main() :
     #refilling the stock
     for z in cafe.keys() :
             
-        cafe[z][2] = cafe[z][4]
+        cafe[z]['stock'] = cafe[z]['refill']
         
     print("All items Refilled....")
 
