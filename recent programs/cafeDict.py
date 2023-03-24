@@ -18,28 +18,32 @@ cafe = {
         'profit' : 12,
         'stock' : 30,
         'sales' : 0,
-        'refill' : 30
+        'refill' : 30,
+        'totalProfit' : 0
     },
     'tea' : {
         'price' : 35,
         'profit' : 10,
         'stock' : 30,
         'sales' : 0,
-        'refill' : 30
+        'refill' : 30,
+        'totalProfit' : 0
     },
     'cappucino' : {
         'price' : 50,
         'profit' : 14,
         'stock' : 20,
         'sales' : 0,
-        'refill' : 20
+        'refill' : 20,
+        'totalProfit' : 0
     },
     'cookie' : {
         'price' : 30,
         'profit' : 5,
         'stock' : 40,
         'sales' : 0,
-        'refill' : 40
+        'refill' : 40,
+        'totalProfit' : 0
     }
 }
 
@@ -76,6 +80,7 @@ def processCustomerInput(list1) :
                     #updating the sales quantity and total profit
                     cafe[item]['sales'] += quantities
                     cafe[item]['stock'] -= quantities
+                    cafe[item]['totalProfit'] += cafe[item]['profit']*cafe[item]['sales']
 
                     #displaying the price of the items buyed
                     if quantities != 0 :
@@ -84,7 +89,6 @@ def processCustomerInput(list1) :
 
                     #calculating the total bill to be paid
                     totalCost += (cafe[item]['price'] * quantities)
-
                     list1[i] = 'a'
                     break      
                   
@@ -100,33 +104,19 @@ def refill(item,quantities) :
 
 def topItemsCategory() :
 
-    topSales = {
-        'coffee' : cafe['coffee']['sales'],
-        'tea' : cafe['tea']['sales'],
-        'cappucino': cafe['cappucino']['sales'],
-        'cookie': cafe['cookie']['sales']
-    }
-
-    topProfit = {
-        'coffee' : cafe['coffee']['sales']*cafe['coffee']['profit'],
-        'tea' : cafe['tea']['sales']*cafe['tea']['profit'],
-        'cappucino': cafe['cappucino']['sales']*cafe['cappucino']['profit'],
-        'cookie': cafe['cookie']['sales']*cafe['cookie']['profit']
-    } 
-
     #sorting the top sales and profit
-    sortedTopSales = sorted(topSales.items(),key=lambda x:x[1],reverse=True)[:3]
-    sortedTopProfit = sorted(topProfit.items(),key=lambda x:x[1],reverse=True)[:3]
+    topSales = dict(sorted(cafe.items(),key=lambda x:x[1]['sales'],reverse=True)[:3])
+    topProfit = dict(sorted(cafe.items(),key=lambda x:x[1]['totalProfit'],reverse=True)[:3])
 
     print("\nTop 3 Sales items")
-    for x in sortedTopSales :
+    for x in topSales :
 
-        print(f'{x[0]}-{x[1]}')
+        print(f'{x}-{topSales[x]["sales"]}')
 
     print("\nTop 3 Profit items")
-    for x in sortedTopProfit :
+    for x in topProfit :
 
-        print(f'{(x[0])}-{x[1]}')
+        print(f'{x}-{topProfit[x]["totalProfit"]}')
 
 def main() :
 
