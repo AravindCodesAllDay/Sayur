@@ -18,37 +18,30 @@ cafe = {
         'profit' : 12,
         'stock' : 30,
         'sales' : 0,
-        'refill' : 30,
-        'totalProfit' : 0
+        'refill' : 30
     },
     'tea' : {
         'price' : 35,
         'profit' : 10,
         'stock' : 30,
         'sales' : 0,
-        'refill' : 30,
-        'totalProfit' : 0
+        'refill' : 30
     },
     'cappucino' : {
         'price' : 50,
         'profit' : 14,
         'stock' : 20,
         'sales' : 0,
-        'refill' : 20,
-        'totalProfit' : 0
+        'refill' : 20
     },
     'cookie' : {
         'price' : 30,
         'profit' : 5,
         'stock' : 40,
         'sales' : 0,
-        'refill' : 40,
-        'totalProfit' : 0
+        'refill' : 40
     }
 }
-
-quantityInWords = ['one','two','three','four','five','six','seven','eight','nine']
-quantityInDigits = ['1','2','3','4','5','6','7','8','9']
 
 def customerOrder(banner) :
 
@@ -66,45 +59,44 @@ def processCustomerInput(list1) :
     totalCost = 0
 
     #taking the input and filtering values
-    for i,items in enumerate(cafe.keys()) :
-
-        quantities = 0
+    for item in list1:
         
-        if items in list1:
+        #checking the item in cafe
+        if item in cafe.keys():
             
-            index = list1[list1.index(items) - 1]
+            #looping to find the quantity for the item
+            for i,quantities in enumerate(list1):
+                
+                #checking for the quantity
+                if quantities.isnumeric():
 
-            if index in quantityInWords :
-                quantities =  quantityInWords.index(index) + 1
+                    quantities =int(quantities)
+                    #refill checking function
+                    refill(item,quantities)
+                    #updating the sales quantity and total profit
+                    cafe[item]['sales'] += quantities
+                    cafe[item]['stock'] -= quantities
 
-            elif index in quantityInDigits :
-                quantities =  quantityInDigits.index(index) + 1
+                    #displaying the price of the items buyed
+                    if quantities != 0 :
 
-        #checking the items left to provide or restock
-        refill(items,quantities)
-                    
-        #updating the stock and sales
-        cafe[items]['stock'] -= quantities
-        cafe[items]['sales'] += quantities
-        cafe[items]['totalProfit'] += (quantities * cafe[items]['profit'])
+                        print(f'{item.capitalize()} Cost = {cafe[item]["price"] * quantities}')
 
-        #displaying the price of the items buyed
-        if quantities != 0 :
+                    #calculating the total bill to be paid
+                    totalCost += (cafe[item]['price'] * quantities)
 
-            print(f'{items.capitalize()} Cost = {cafe[items]["price"] * quantities}')
-
-        #calculating the total bill to be paid
-        totalCost += (cafe[items]['price'] * quantities)
-           
+                    list1[i] = 'a'
+                    break      
+                  
     print(f'Total bill = {totalCost}')
 
-def refill(items,quantities) :
+def refill(item,quantities) :
 
     #stock refill checking conditions
-    if (cafe[items]['stock'] <= (cafe[items]['refill'] * 0.2)) or (cafe[items]['stock'] - quantities < 0) :
+    if (cafe[item]['stock'] <= (cafe[item]['refill'] * 0.2)) or (cafe[item]['stock'] - quantities < 0) :
     
-        cafe[items]['stock'] = cafe[items]['refill']
-        print(f"{items} Refilled....")
+        cafe[item]['stock'] = cafe[item]['refill']
+        print(f"{item} Refilled....")
 
 def topItemsCategory() :
 
@@ -116,10 +108,10 @@ def topItemsCategory() :
     }
 
     topProfit = {
-        'coffee' : cafe['coffee']['totalProfit'],
-        'tea' : cafe['tea']['totalProfit'],
-        'cappucino': cafe['cappucino']['totalProfit'],
-        'cookie': cafe['cookie']['totalProfit']
+        'coffee' : cafe['coffee']['sales']*cafe['coffee']['profit'],
+        'tea' : cafe['tea']['sales']*cafe['tea']['profit'],
+        'cappucino': cafe['cappucino']['sales']*cafe['cappucino']['profit'],
+        'cookie': cafe['cookie']['sales']*cafe['cookie']['profit']
     } 
 
     #sorting the top sales and profit

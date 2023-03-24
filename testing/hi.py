@@ -9,111 +9,152 @@ if the supply reaches 20% of the stock. Print the 3 items with highest sales, an
 #importing time
 import time
 startTime = time.time()
-timeLimit = 10
+timeLimit = 10 #in seconds
 
-#initialization
-itemsInCafe = ['coffee','tea','cappucino','cookie']
-itemPrice = [40,35,50,30]
-itemProfit = [12,10,14,5]
-itemStock = [30,30,20,40]
-itemStockRefill = [30,30,20,40]
-itemSales = [0,0,0,0]
-topSale = [0,0,0,0]
-topProfit = [0,0,0,0]
+#initialization cafe items and its properties
+cafe = {
+    'coffee' : {
+        'price' : 40,
+        'profit' : 12,
+        'stock' : 30,
+        'sales' : 0,
+        'refill' : 30
+    },
+    'tea' : {
+        'price' : 35,
+        'profit' : 10,
+        'stock' : 30,
+        'sales' : 0,
+        'refill' : 30
+    },
+    'cappucino' : {
+        'price' : 50,
+        'profit' : 14,
+        'stock' : 20,
+        'sales' : 0,
+        'refill' : 20
+    },
+    'cookie' : {
+        'price' : 30,
+        'profit' : 5,
+        'stock' : 40,
+        'sales' : 0,
+        'refill' : 40
+    }
+}
 
-quantityInWords = ['one','two','three','four','five','six','seven','eight','nine']
-quantityInDigits = ['1','2','3','4','5','6','7','8','9']
+def customerOrder(banner) :
 
-#getting customer input and calculating the sold item
-def CustomerInput(customerInput) :
-    
-    list1 = list(customerInput.split())
+    print(banner)
+
+    #getting customer input
+    customerInput = input("Enter ur order... : ")
+
+    #returning customer input as a list
+    return customerInput.lower().split()
+
+#getting customer input and calculating the sold items
+def processCustomerInput(list1) :
+        
     totalCost = 0
-    quantities = []
-    
-    #taking the input and filtering valuse
-    for i in range(len(itemsInCafe)) :
+
+    #taking the input and filtering values
+    for item in list1:
         
-        if itemsInCafe[i] in list1:
+        #checking the item in cafe
+        if item in cafe.keys():
             
-            index = (list1.index(itemsInCafe[i])) - 1
-            
-            for x in range(len(quantityInWords)) :
+            #looping to find the quantity for the item
+            for i,quantities in enumerate(list1):
                 
-                if quantityInWords[x] in list1[index] or quantityInDigits[x] in list1[index] :
-                    
-                    quantities.insert(i,int(quantityInDigits[x]))
+                #checking for the quantity
+                if quantities.isnumeric():
 
-        else:
-            
-            quantities.insert(i,0)
+                    quantities =int(quantities)
+                    #refill checking function
+                    refill(item,quantities)
+                    #updating the sales quantity and total profit
+                    cafe[item]['sales'] += quantities
+                    cafe[item]['stock'] -= quantities
 
-        #updating the stock
-        itemStock[i] -= quantities[i]
-        itemSales[i] += quantities[i]
+                    #displaying the price of the items buyed
+                    if quantities != 0 :
 
-        if quantities[i] != 0 :
+                        print(f'{item.capitalize()} Cost = {cafe[item]["price"] * quantities}')
 
-            print(f'{itemsInCafe[i].capitalize()} Cost = {itemPrice[i] * quantities[i]}') 
+                    #calculating the total bill to be paid
+                    totalCost += (cafe[item]['price'] * quantities)
 
-        totalCost += (itemPrice[i] * quantities[i])
-
-        #stock refill checking condition
-        if itemStock[i] <= (itemStockRefill[i] * 0.2):
-        
-            itemStock[i] = itemStockRefill[i]
-            print(f"{itemsInCafe[i]} Refilled....")
-            
+                    list1[i] = 'a'
+                    break      
+                  
     print(f'Total bill = {totalCost}')
-    
-#displaying top 3 sales and profit item
-def topItemsCategory():
 
-    for x in range(len(itemSales)) :
-        topProfit[x] = itemSales[x] * itemProfit[x]
-    
-    itemsInCafeList = list(enumerate(itemsInCafe))
-    topSale = list(enumerate(itemSales))
-    topProf = list(enumerate(topProfit))
+def refill(item,quantities) :
 
-    sortTopSale = sorted(topSale,key = lambda x:x[1],reverse=True)
-    sortTopProf = sorted(topProf,key = lambda x:x[1],reverse=True)
+    #stock refill checking conditions
+    if (cafe[item]['stock'] <= (cafe[item]['refill'] * 0.2)) or (cafe[item]['stock'] - quantities < 0) :
+    
+        cafe[item]['stock'] = cafe[item]['refill']
+        print(f"{item} Refilled....")
+
+def topItemsCategory() :
+
+    topSales = {
+        'coffee' : cafe['coffee']['sales'],
+        'tea' : cafe['tea']['sales'],
+        'cappucino': cafe['cappucino']['sales'],
+        'cookie': cafe['cookie']['sales']
+    }
+
+    topProfit = {
+        'coffee' : cafe['coffee']['sales']*cafe['coffee']['profit'],
+        'tea' : cafe['tea']['sales']*cafe['tea']['profit'],
+        'cappucino': cafe['cappucino']['sales']*cafe['cappucino']['profit'],
+        'cookie': cafe['cookie']['sales']*cafe['cookie']['profit']
+    } 
+
+    #sorting the top sales and profit
+    sortedTopSales = sorted(topSales.items(),key=lambda x:x[1],reverse=True)[:3]
+    sortedTopProfit = sorted(topProfit.items(),key=lambda x:x[1],reverse=True)[:3]
 
     print("\nTop 3 Sales items")
-    for i,a in enumerate(sortTopSale[0:3]):
-        print(f'{i+1}-{itemsInCafeList[a[0]][1]}-{a[1]}')
-        
+    for x in sortedTopSales :
+
+        print(f'{x[0]}-{x[1]}')
+
     print("\nTop 3 Profit items")
-    for y,b in enumerate(sortTopProf[0:3]):
-        print(f'{y+1}-{itemsInCafeList[b[0]][1]}-{b[1]}')
+    for x in sortedTopProfit :
+
+        print(f'{(x[0])}-{x[1]}')
 
 def main() :
 
     print("\t...Welcome to the cafe..")
-    print("(Here are the items that we can served)")
+    print("(Here are the items that we can serve)")
     banner = ''
 
     #displaying items
-    for item in range(len(itemsInCafe)) :
+    for i,item in enumerate(cafe.keys()) :
 
-        banner += '\n' + str(item+1) + ' - ' + str(itemsInCafe[item].upper())
+        banner += '\n' + str(i+1) + ' - ' + str(item.upper())
 
     #checking time duration
     while (time.time() - startTime) < timeLimit :    
 
-        print(banner)
-        customerInput = input("Enter ur order... : ")
+        #getting input 
+        list1 = customerOrder(banner)
 
-        #calling function to take customer input
-        CustomerInput(customerInput.lower())
+        #calling function to process customer input
+        processCustomerInput(list1)
 
     #calling function to print top results 
     topItemsCategory()
 
     #refilling the stock
-    for z in range(len(itemsInCafe)) :
+    for z in cafe.values() :
             
-        itemStock[z] = itemStockRefill[z]
+        z['stock'] = z['refill']
         
     print("All items Refilled....")
 

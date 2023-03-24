@@ -36,11 +36,7 @@ print(my_keys)
     t3Sales = sorted(topSales,key = topSales() ,reverse=True)
 
 
-c = Counter(cafe['cappucino'])
 
-most_common = c.most_common(1)
-
-print(most_common)
 '''
 
 topSales = {
@@ -49,8 +45,6 @@ topSales = {
     'cappucino': cafe['cappucino']['sales'],
     'cookie': cafe['cookie']['sales']
 }
-
-
 
 sorted_dict = (sorted(topSales.items(),key=lambda x:x[1],reverse=True)[:3])
 print(sorted_dict)
@@ -71,3 +65,8 @@ my_keys = sorted(topSales.keys(),key=topSales.get() , reverse=True)[:3]
 print(my_keys)
 
 '''
+c = Counter(cafe['cappucino'])
+
+most_common = c.most_common(1)
+
+print(most_common)
