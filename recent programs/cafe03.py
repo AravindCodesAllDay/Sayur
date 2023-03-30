@@ -66,7 +66,7 @@ cafe = {
     }
 }
 
-refillCount = 0
+refillCount = 1
 
 def customerOrder(banner) :
 
@@ -82,8 +82,8 @@ def refill(item,quantities) :
 
     global refillCount
 
-    if refillCount%3==0:
-        for x in cafe.values():
+    if refillCount%3==0 :
+        for x in cafe.values() :
             x['stock'] = x['refill']
 
     #stock refill checking conditions
@@ -96,7 +96,6 @@ def refill(item,quantities) :
 def processCustomerInput(list1) :
         
     totalCost = 0
-
 
     #taking the input and filtering values
     for item in list1:
@@ -170,6 +169,8 @@ def main() :
         if z['category'] == 'hot' :
             z['stock'] = z['refill']
 
+    print('Hot items refilled')
+
     #checking time duration
     while (time.time() - startTime) < timeLimit :    
 
@@ -186,5 +187,7 @@ def main() :
     for z in cafe.values() :
         if z['category'] == 'cold' :
             z['stock'] = z['refill']
+
+    print('Cold items refilled')
 
 main()
