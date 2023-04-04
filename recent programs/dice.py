@@ -69,15 +69,11 @@ def display():
 def main():
 
     rollCount = 0
-    roll = 'a'
 
     while player1['points'] < 5 or player2['points'] < 5 :
 
         a = input('roll...  ')
-
-        num1 = random.randint(1,6)
-        num2 = random.randint(1,6)
-        diceValue = [num1,num2]
+        diceValue = [random.randint(1,6),random.randint(1,6)]
 
         if rollCount%2 == 0 :
             Player1(diceValue)
