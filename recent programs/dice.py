@@ -13,12 +13,12 @@ import random
 
 player1 = {
     'points' : 0,
-    'ownedBox' : [[0,0]]
+    'ownedBox' : []
 }
 
 player2 = {
     'points' : 0,
-    'ownedBox' : [[0,0]]
+    'ownedBox' : []
 }
 
 def Player1(diceValue) :
@@ -57,7 +57,7 @@ def Player2(diceValue) :
             player1['points'] += 1
             break
         
-    if diceValue not in player2['ownedBox'] and diceValue not in player2['ownedBox'] :
+    if diceValue not in player1['ownedBox'] and diceValue not in player2['ownedBox'] :
 
         player2['ownedBox'].append(diceValue)
 
@@ -73,6 +73,7 @@ def main():
     while player1['points'] < 5 or player2['points'] < 5 :
 
         a = input('roll...  ')
+
         diceValue = [random.randint(1,6),random.randint(1,6)]
 
         if rollCount%2 == 0 :
@@ -85,9 +86,13 @@ def main():
 
         rollCount += 1
 
+    if player1['points'] >= 5 :
+        print(f'Player1 wins')
+
+    else :
+        print(f'Player2 wins')
+
+
 main()
-
-
-
 
 
