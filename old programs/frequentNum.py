@@ -1,3 +1,5 @@
+#PROGRAM :
+
 word = 'we Attack at dawn'
 lettercount = [0]*26
 unique = {}
