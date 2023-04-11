@@ -24,6 +24,7 @@ player2 = {
 def Player1(diceValue) :
 
     print(f'Player1 rolls {diceValue}')
+    addBox = True
 
     for x,y in player2['ownedBox'] :
 
@@ -35,9 +36,10 @@ def Player1(diceValue) :
         elif [x-1,y] == diceValue or [x+1,y] == diceValue or [x,y-1] == diceValue or [x,y+1] == diceValue :
 
             player2['points'] += 1
+            addBox = False
             break
         
-    if diceValue not in player1['ownedBox'] and diceValue not in player2['ownedBox'] :
+    if diceValue not in player1['ownedBox'] and diceValue not in player2['ownedBox'] and addBox == True :
         player1['ownedBox'].append(diceValue)
 
     
@@ -70,7 +72,7 @@ def main():
 
     rollCount = 0
 
-    while player1['points'] < 5 or player2['points'] < 5 :
+    while player1['points'] < 5 and player2['points'] < 5 :
 
         a = input('roll...  ')
 
