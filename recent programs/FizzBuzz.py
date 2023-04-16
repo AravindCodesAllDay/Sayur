@@ -6,20 +6,39 @@ For numbers that are multiples of three and five, print "FizzBuzz".
 
 #PROGRAM :
 
-a = ''
+def fizz(i) :
 
-for i in range(1,51) :
+    b = ''
 
-    if i % 3 == 0 and i % 5 == 0 :
-        a += 'FizzBuzz  '
+    if i % 3 == 0 :
+        b += 'Fizz'
 
-    elif i % 3 == 0 :
-        a += 'Fizz  '
+    return b
 
-    elif i % 5 == 0 :
-        a += 'Buzz  '
+def buzz(i) :
+
+    c = ''
+
+    if i % 5 == 0 :
+        c += 'Buzz'
+
+    return c
+
+def main() :
+
+    a = ''
+
+    for i in range(1,51) :
+
+        b = fizz(i)
+        c = buzz(i)
+
+        if b == '' and c == '' :
+            a += str(i) + ' '
+
+        else :
+            a += b + c + ' '
         
-    else :
-        a += str(i) + '  '
+    print(a)
 
-print(a)
+main()
