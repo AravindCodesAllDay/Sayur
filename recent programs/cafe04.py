@@ -8,7 +8,7 @@ cafe = mysql.connector.connect(
 )
 
 mycursor = cafe.cursor()
-mycursor.execute("INSERT INTO ItemInventory VALUES(102,10,20,5,20)")
-mycursor.execute("SELECT * FROM ItemInventory" )
+mycursor.execute("INSERT INTO cafeitems VALUES('coffee', 10, 20, 5, 20, 12, 12)")
+mycursor.execute("SELECT * FROM cafeitems" )
 myresult = mycursor.fetchall()
 print(myresult)
