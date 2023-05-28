@@ -7,28 +7,29 @@
 def addTwoNumbers(n1, n2):
     ans = n1 + n2
     return ans
+
 def subtractAfromB(a, b):
-    #FillinMissingCode
-    return #FillinMissingCode
+    ans = b-a#FillinMissingCode
+    return ans #FillinMissingCode
 
 def multiplyTwoNumbers(n1,n2):
-    #FillinMissingCode
-    return #FillinMissingCode
-def divideAFromB(a, b):
-    ans = b / a
+    ans = n1 * n2#FillinMissingCode
     return #FillinMissingCode
 
-#main code
+def divideAFromB(a, b):
+    ans = b / a
+    return ans #FillinMissingCode
+
+#main codeiu
 
 #Get 5 marks from student and find the total
 total = 0
-for i in range(0,5):
-    mark = (int(input("Enter mark ", i))) #correct te syntax as needed
-    #FillinMissingCode
-
+for i in range(1,6):
+    mark = (int(input(f"Enter mark of sub {i} "))) #correct te syntax as needed
+    total = addTwoNumbers(total,mark) #FillinMissingCode
 
 #Call divide function to get the average
+avgMark= divideAFromB(5,total)
 #FillinMissingCode
 
-
-print("The avg mark is ", avg)
+print("The avg mark is ", avgMark)

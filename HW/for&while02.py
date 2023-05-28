@@ -32,8 +32,7 @@ while (True) :
     else:
         print ("Try again")
 
-print (f'common colors = {movieslist2}') #FillinMissingCode - list all the common movies
-
+print (f'common movies = {movieslist2}') #FillinMissingCode - list all the common movies
 
 ############## Problem  2 #################### 
 #Calculate the monthly salary for the phone salesman
@@ -47,25 +46,25 @@ monthlySalesList = [5,23,21,14,23,12,4,12,22,22,34,12]  # Sample number of phone
 #FillinMissingCode - initialise all the variables needed
 
 for month, phoneCount in enumerate(monthlySalesList):
-    if(phoneCount < 20):
-        previousMonthSalary = currentMonthSalary #we set this so that, we can use this info in the next iteration
-        continue #no need to calculate anything because <20 phones sold
-
-    
     #calculate the Salary using If stmts
-
+    currentMonthlySalary = 10000
     #FillinMissingCode
-    currentMonthSalary = #FillinMissingCode
-    print (f"This month's salary before additional bonus {currentMonthSalary}") 
+    if phoneCount>5:
+        currentMonthlySalary += (phoneCount*1100)
+    currentMonthlySalary += (5000*int(phoneCount/5))   
+    if currentMonthlySalary>20000:
+        currentMonthlySalary=20000     
+    
+    print (f"This month's salary before additional bonus {currentMonthlySalary}") 
 
     #check for condition #If the salesman's salary is more than Rs20000 in the previous month and sells 20 or more phones 
     # this month also, then he gets additional Rs5000.
 
-    
+    if(phoneCount < 20):
+        previousMonthSalary = currentMonthlySalary #we set this so that, we can use this info in the next iteration
+        continue #no need to calculate anything because <20 phones sold
     
     #calculate the new salary
-    currentMonthSalary =   #FillinMissingCode
-    print(f}This month's salary after additional bonus {currentMonthSalary})
-    previousMonthSalary = currentMonthSalary #Why are we doing this?
-
- 
+    currentMonthlySalary += 5000   #FillinMissingCode
+    print(f'This month"s salary after additional bonus {currentMonthlySalary}')
+    previousMonthSalary = currentMonthlySalary #Why are we doing this?
