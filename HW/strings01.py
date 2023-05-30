@@ -27,6 +27,18 @@ myName = input("Enter ur name : ")#FillinMissingCode
 for letter in myName:
     name += letter 
     print(name)
+
+#output:
+'''
+Enter ur name : aravind
+a
+ar
+ara
+arav
+aravi
+aravin
+aravind
+'''
         
 
 ########## Program 3
@@ -45,6 +57,12 @@ for word in inputSentence.split(): #gets the word in a sentence
     word = word[1:] + firstChar + pigLatinKey
     newSentence += word + ' ' 
 print(newSentence)
+
+#output:
+'''
+enter a sentence : I Love Dosa
+Iay oveLay osaDay
+'''
         
 ########## Program 4
 #PigLatin - From the input string, for each word, remove the first chars until a vowek, add it to the end of the word
@@ -71,3 +89,9 @@ for word in inputSentence.split(): #gets the word in a sentence
     newSentence += word + ' '
      
 print(newSentence)
+
+#output:
+'''
+Enter a sentence : I am in Madurai
+Iay maay niay duraiMaay
+'''

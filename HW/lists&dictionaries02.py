@@ -9,19 +9,19 @@ colorList1=[]
 colorList2=[]
 colorList3=[]
 while (True) :
-    color = input(f"What movie you like? n to exit : " )
+    color = input(f"What color you like? n to exit : " )
     if color=='n' :
         break
-    #convert movies into a List
     colorList1.append(color)
     #FillinMissingCode
 
 while (True) :
-    #ask the second friend for one movie at a time
-    color = input("Enter a movie you like, n to exit : " )#FillinMissingCode
+
+    color = input("Enter a color you like, n to exit : " )
+    #FillinMissingCode
     if color=='n' :
-        break
-    #Check if this movie is in the movie list
+        break 
+
     if color in colorList1:
         #FillinMissingCode
         #if present,       
@@ -32,7 +32,26 @@ print(f'colors liked by 1st friend {colorList1}')
 print(f'colors liked by 2nd friend {colorList3}')
 print(f'colors liked by both friends {colorList2}')
 
-print (f'common colors = {colorList2}') #FillinMissingCode - list all the common movies
+print (f'common colors = {colorList2}') 
+
+#output:
+'''
+What color you like? n to exit : red
+What color you like? n to exit : blue
+What color you like? n to exit : yellow
+What color you like? n to exit : orange
+What color you like? n to exit : n
+Enter a color you like, n to exit : purple
+Enter a color you like, n to exit : red
+Enter a color you like, n to exit : yellow
+Enter a color you like, n to exit : pink
+Enter a color you like, n to exit : green
+Enter a color you like, n to exit : n
+colors liked by 1st friend ['red', 'blue', 'yellow', 'orange']
+colors liked by 2nd friend ['purple', 'pink', 'green']
+colors liked by both friends ['red', 'yellow']
+common colors = ['red', 'yellow']
+'''
 
 ############## Problem 2 ####################
 #Ask the user how many members in the family. Get Name, age and height and weight.
@@ -42,7 +61,7 @@ print (f'common colors = {colorList2}') #FillinMissingCode - list all the common
 # Name      Age     Height(cm)      Weight(kg)
 # Ram       35      180             80
 # Seetha    34      145             58
-#
+
 nameList = []
 ageList = []
 heightList = []
@@ -63,4 +82,14 @@ for member in range (1, noOfPeople + 1):
 #print the header 
 print ("Name\t\tAge\t\tHeight(cm)\t\tWeight(kg)") #learn about \t
 for index, member in enumerate(nameList): #Learn how enumerate works
-    print( f"{member}\t\t {ageList[index]}\t\t{heightList[index]}\t\t{weightList[index]}")        
+    print( f"{member}\t\t {ageList[index]}\t\t{heightList[index]}\t\t{weightList[index]}")   
+
+#output:
+'''
+How many people in the family : 2          
+Enter the details of member 1 Name, age, height, weight : tom 19 161 48
+Enter the details of member 2 Name, age, height, weight : jerry 14 120 28
+Name            Age             Height(cm)              Weight(kg)
+tom              19             161             48
+jerry            14             120             28
+'''     

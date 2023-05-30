@@ -23,3 +23,13 @@ while (stdRoll <= noOfStudents):
     total += mark
     stdRoll += 1
 print ("Avg is : ", total/noOfStudents)  #FillinMissingCode
+
+#output:
+'''
+Enter mark for student 1 : 60
+Enter mark for student 2 : 40
+Enter mark for student 3 : 70
+Enter mark for student 4 : 50
+Enter mark for student 5 : 35
+Avg is :  51.0
+'''

@@ -20,12 +20,27 @@ mark2 = []
 for student in range (numOfStd):
     #FillinMissingCode  to get studnet name
     stdList.append(input(f"enter student {student +1} name : "))
-    for mark in range (numOfMarks):
-        mark1.append(input(f"enter one mark of the student {stdList[student]} : "))
-        mark2.append(input(f"enter two mark of the student {stdList[student]} : "))
+    mark1.append(input(f"enter one mark of the student {stdList[student]} : "))
+    mark2.append(input(f"enter two mark of the student {stdList[student]} : "))
 
 for i,j in enumerate(stdList):
     print(j,mark1[i],mark2[i])
+
+#output:
+'''
+enter student 1 name : Tom
+enter one mark of the student Tom : 50
+enter two mark of the student Tom : 60
+enter student 2 name : Jerry
+enter one mark of the student Jerry : 30
+enter two mark of the student Jerry : 20
+enter student 3 name : Terry
+enter one mark of the student Terry : 40
+enter two mark of the student Terry : 50
+Tom 50 60
+Jerry 30 20
+Terry 40 50
+'''
 
 ######## Problem  2 ###############
 #Print multiplication tables from 7 to 16, each number upto 12 rows.
@@ -33,7 +48,6 @@ for i,j in enumerate(stdList):
 for i in range(7,16+1):
      for j in range(1,12+1):
          print(f"{i}+{j}={i*j}")
-
 
 ######## Problem  3 ###############
 #Print Chess board (alternate black and white squares)
@@ -48,6 +62,17 @@ for i in range(8):
         a+='\u25A0'
     print(a)
 
+#output:
+'''
+b■b■b■b■
+■b■b■b■b
+b■b■b■b■
+■b■b■b■b
+b■b■b■b■
+■b■b■b■b
+b■b■b■b■
+■b■b■b■b
+'''
 
 ######## Problem  4  ###############
 
@@ -77,3 +102,13 @@ for i in range(1,n+1):
     for j in range(1,n+1):
         a+=str(i*j)+' '
     print(a)
+
+#output:
+'''
+enter the square matrix n : 3
+ 1 2 3
+ ______
+1 |1 2 3
+2 |2 4 6
+3 |3 6 9
+'''

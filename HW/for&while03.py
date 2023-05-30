@@ -23,6 +23,12 @@ while (money >= 200 or money1 >=150) :
     money1 -= 150    
     #FillinMissingCode for buying cake
 
-print(f"the number of choc and cake are {noOfChoc} and {noOfCake}")
+print(f"the number of chocolates and cakes you can buy are {noOfChoc} and {noOfCake}")
 #print no of cakes and choc
 #FillinMissingCode
+
+#output:
+'''
+enter your budget : 1100
+the number of chocolates and cakes you can buy are 5 and 7
+'''

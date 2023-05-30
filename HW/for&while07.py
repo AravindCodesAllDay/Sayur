@@ -3,7 +3,7 @@
 #After printing each line, wait for user input. If the user presses space, continue
 #If the users presses any other key, stop printing. Maximum 10 lines
 
-n = int(input("Enter the number of rows: "))
+n = int(input("Enter the number of Characters : "))
 #print the top triangle
 for i in range(n):
     a =input()
@@ -17,6 +17,19 @@ for i in range(n - 1, 0, -1):
     a=input()
     print(" "*(n - i) + "$"*(2*i-1))
     
+#Output:
+'''
+Enter the number of Characters : 3
+    
+ 
+  $
+ 
+ $$$
+ 
+ $$$
+ 
+  $
+'''
 
 ######## Problem 2 ###############
 # Computer will guess a random number. 
@@ -31,7 +44,7 @@ import random#FillinMissingCode
 computerNo = random.randint(3, 9)
 attempt = 0
 while(True):
-    userNo = int (input("Enter ur guess"))
+    userNo = int(input("Enter ur guess : "))
     #FillinMissingCode
     attempt +=1
     if userNo == computerNo:
@@ -41,6 +54,14 @@ while(True):
         print('Lower')
         continue
     print('Higher')
+
+#output:
+'''
+Enter ur guess : 5
+Higher
+Enter ur guess : 7
+u found the number 7 in attempt 2
+'''
     
 ########## Problem 3 ############
 #Write a program for a bag shop. Shop has 100 red bags (each Rs 1000) and 200 white bags (each Rs 1500)
@@ -50,7 +71,7 @@ while(True):
 
 #initialize variables
 redBags, whiteBags = 100, 200
-totalSales , totalBagsSold = 0
+totalSales, totalBagsSold = 0, 0
 
 while (totalSales < 10000 or totalBagsSold < 10) :
     #Ask customer for input
@@ -66,3 +87,11 @@ while (totalSales < 10000 or totalBagsSold < 10) :
 
 print (f"totalBagsSold = {totalBagsSold}") #FillinMissingCode) 
 print (f"totalSales = {totalSales}")
+
+#output:
+'''
+enter the amount of red bags needed : 25
+enter the amount of white bags needed : 30
+totalBagsSold = 55
+totalSales = 70000
+'''

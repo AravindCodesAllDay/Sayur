@@ -30,6 +30,13 @@ elif income<1500001:
 else:
     print(f"your actual salary after tax is {income*(0.70-(taxDeduction/100))}")
 
+#output:
+'''
+enter your monthly salary : 400000
+Enter tax detuction in percentage,if any : 3 
+your actual salary after tax is 392000.0
+'''
+
 ############ Problem 2 ####
 #Calculate the BMI and if the person is underweihgt/normal/overweight/obese
 #Google how to calculate BMI and decide on the input.
@@ -42,13 +49,20 @@ weight = float(input("enter ur weight in kg : "))
 height = float(input("enter ur height in meters : "))
 bmi = weight/(height**2)
 if bmi <18.5 :
-    print(f"your BMI is  {bmi} and ur Under weight")
+    print(f"your BMI is {bmi} and ur Under weight")
 elif bmi <24.9 :
-    print(f"your BMI is  {bmi} and ur in Healthy weight range")
+    print(f"your BMI is {bmi} and ur in Healthy weight range")
 elif bmi<29.9 :
-    print(f"your BMI is  {bmi} and ur Over weight")
+    print(f"your BMI is {bmi} and ur Over weight")
 else :
-    print(f"your BMI is  {bmi} and ur Obese")
+    print(f"your BMI is {bmi} and ur Obese")
+
+#output:
+'''
+enter ur weight in kg : 48
+enter ur height in meters : 1.61
+your BMI is 18.4 and ur Under weight
+'''
 
 ########## Problem 3 ##########
 ##buy choc and cake
@@ -69,6 +83,14 @@ if cakeCount<cakeBought :
     cakeBought=cakeCount
 print(f"The total number of chocolate or cake you can buy is {chocoBought} and {cakeBought}")
 
+#output:
+'''
+Enter ur Budget to buy In Bakery : 1100
+enter the number of chocolate available in shop : 7
+enter the number of cake available in shop : 4
+The total number of chocolate or cake you can buy is 5 and 4
+'''
+
 ############## Problem 4 ##############
 #Calculate the Grade for a student, using 3 marks.
 # The student has 100 marks in any one subject, Grade is A.
@@ -83,11 +105,19 @@ mark3 = int(input("enter ur mark in sub 3 : "))#FillinMissingCode
 
 if(mark1 == 100 or mark2 == 100 or mark3 == 100): #at leasr one mark is 100
     print("Grade A")
-elif mark1<89 or mark2<89 or mark3<89 :#FillinMissingCode 
+elif mark1>89 or mark2>89 or mark3>89 :#FillinMissingCode 
     print("Grade B")
-elif mark1<59 or mark2<59 or mark3<59 :#FillinMissingCode
+elif mark1>59 or mark2>59 or mark3>59 :#FillinMissingCode
     print("Garde C")
 elif mark1<50 or mark2<50 or mark3<50 :#FillinMissingCode
     print ("Grade D")
 else :
     print ("Grade F")
+
+#output:
+'''
+enter ur mark in sub 1 : 90
+enter ur mark in sub 2 : 40
+enter ur mark in sub 3 : 80
+Grade B
+'''

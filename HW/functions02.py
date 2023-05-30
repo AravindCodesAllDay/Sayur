@@ -50,3 +50,10 @@ historyAvg = divideAFromB(len(marksInHistory),historyTotal)
 print("The avg mark is ", mathsAvg)
 print("The avg mark is ", scienceAvg)
 print("The avg mark is ", historyAvg)
+
+#output:
+'''
+The avg mark is  65.0
+The avg mark is  68.2
+The avg mark is  62.2
+'''

@@ -4,10 +4,15 @@
 
 sentence = "This is a cat and it has a tail and two eyes"
 
-for word in sentence:
+uniqueWords = {'a'}
+
+for word in sentence.split():
+    uniqueWords.add(word)
     #FillinMissingCode
-   
-print (countOfWords)
+countOfWords = len(uniqueWords)   
+print(f'number of unique words is {countOfWords}')
+
+#output
+#number of unique words is 10
 
 ########## Program 2
-#
