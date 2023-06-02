@@ -13,13 +13,24 @@ Row 5, col 7
 '''
 # next pattern is - empty diamond
 
-width = int(input("enter the width"))
-height = int(input("enter the height"))
+width = int(input("enter the width : "))
+height = int(input("enter the height : "))
 for i in range(height):
     a=''
     for j in range(width):
         if i == 0 or i == height-1 or j==0 or j==width-1:
-            a += '*' 
+            a += ' *' 
             continue
-        a+=' '
+        a+='  '
     print(a)
+
+#output:
+'''
+enter the width : 7
+enter the height : 5
+ * * * * * * *
+ *           *
+ *           *
+ *           *
+ * * * * * * *
+'''

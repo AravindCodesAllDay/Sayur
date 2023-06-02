@@ -27,7 +27,7 @@ def avgSales(itemSales):
     for sale in itemSales:
         totalSales = addTwoNumbers(totalSales,sale)
     return divideAFromB(len(itemSales),totalSales)
-    
+
 #main code
 def main ():
     #we have sales data for a week. 

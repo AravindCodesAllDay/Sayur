@@ -1,7 +1,5 @@
 #write code for both for and while loop
 #Get marks from 5  students and calculate avg
-#
-
 #for loop
 total = 0
 studentCount = 5

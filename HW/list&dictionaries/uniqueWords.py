@@ -12,7 +12,9 @@ for word in sentence.split():
 countOfWords = len(uniqueWords)   
 print(f'number of unique words is {countOfWords}')
 
-#output
-#number of unique words is 10
+#output:
+'''
+number of unique words is 10
+'''
 
-########## Program 2
+
