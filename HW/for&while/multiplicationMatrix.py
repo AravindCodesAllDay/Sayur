@@ -16,10 +16,10 @@
 start= int(input("Enter a start value : "))
 end =int(input("Enter a end value : "))
 a = ' '
-b = ' '
+b = '     '
 for i in range(start,end+1):
     a+= '\t' +str(i)
-    b+='__'
+    b+='________'
 print(a)
 print(b)
 for i in range(start,end+1):
@@ -33,7 +33,7 @@ for i in range(start,end+1):
 Enter a start value : 12
 Enter a end value : 18
         12      13      14      15      16      17      18
- ______________
+     ________________________________________________________
 12 |   144      156     168     180     192     204     216
 13 |   156      169     182     195     208     221     234
 14 |   168      182     196     210     224     238     252

@@ -1,4 +1,3 @@
-
 '''
 Get the list of employee names from the user.
 Get the monthly phone sales for each employee for the first 4 months of the year.
@@ -16,6 +15,37 @@ Sam - ...
 Sara - ...
 
 '''
+
+
+def seperateNames():
+    employeeData = {}
+    employeeNames = input("Enter employee names (comma-separated): ").split(",")
+    for name in employeeNames:
+        sales = []
+        for month in range(1, 5):
+            sale = int(input(f"Enter phone sales for {name} in month {month}: "))
+            sales.append(sale)
+        employeeData[name] = sales
+    return employeeData
+
+
+def seperateEmployeeData(employeeData):
+    sorted_names = sorted(employeeData.keys())
+    for name in sorted_names:
+        sortedSales = sorted(employeeData[name])
+        salesString = ", ".join(str(sale) for sale in sortedSales)
+        print(f"{name} - {salesString}")
+
+
+# Get employee data from the user
+employee_data = seperateNames()
+
+# Sort and display the employee data
+seperateEmployeeData(employee_data)
+
+
+
+
 
 '''
 Same details as above.
@@ -36,7 +66,6 @@ Month1      300     340     1000    Sara
 Month2      567     456     234     Sam    
 Month3      234     456     3000    Sara
 Month4      1000    234     2000    Sara
-
 
 Also , print the employee who sold most phones in all 4 months added.
 
