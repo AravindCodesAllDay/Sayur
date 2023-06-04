@@ -17,11 +17,11 @@ for word in inputSentence.split(): #gets the word in a sentence
         if char in vowels:
             first_vowel_index = index
             break
-
+    
     #FillinMissingCode - check if the char is vowel or not    
     word = word[first_vowel_index+1:] + word[:first_vowel_index+1] + pigLatinKey
     newSentence += word + ' '
-     
+    
 print(newSentence)
 
 #output:

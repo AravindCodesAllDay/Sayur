@@ -38,20 +38,23 @@ def main ():
     vadaiSales = [23,45,67,12,89,90,120]
 
     #Find total sales in the week.
+    avgCoffee = avgSales(coffeeSales)
+    avgTea = avgSales(teaSales)
+    avgVadau = avgSales(vadaiSales)
     #calculate avg sales for a week
-    print(f"Average sale for vadai in a week is {avgSales(coffeeSales)}")  
-    print(f"Average sale for vadai in a week is {avgSales(teaSales)}")  
-    print(f"Average sale for vadai in a week is {avgSales(vadaiSales)}")         
+    print(f"Average sale for coffee in a week is {avgCoffee}")  
+    print(f"Average sale for tea in a week is {avgTea}")  
+    print(f"Average sale for vadai in a week is {avgVadau}")         
 
     employeeSalary = 500 #Rs500 per day
 
     #calcuate sales per month
-    print(f"Average sale for vadai in a week is {avgSales(coffeeSales)*4}")  
-    print(f"Average sale for vadai in a week is {avgSales(teaSales)*4}")  
+    print(f"Average sale for coffee in a week is {avgCoffee*4}")  
+    print(f"Average sale for tea in a week is {avgTea*4}")  
     print(f"Average sale for vadai in a week is {avgSales(vadaiSales)*4}")
 
     #calculate profit.
-    
+
 
     #Call divide function to get the average from all three subjects
     #FillinMissingCode
