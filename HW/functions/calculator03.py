@@ -45,11 +45,13 @@ def main ():
 
     employeeSalary = 500 #Rs500 per day
 
-    #calculate sales per week
-
     #calcuate sales per month
+    print(f"Average sale for vadai in a week is {avgSales(coffeeSales)*4}")  
+    print(f"Average sale for vadai in a week is {avgSales(teaSales)*4}")  
+    print(f"Average sale for vadai in a week is {avgSales(vadaiSales)*4}")
 
     #calculate profit.
+    
 
     #Call divide function to get the average from all three subjects
     #FillinMissingCode

@@ -27,7 +27,6 @@ for row in pattern:
 
 '''
 def print_pattern(n):
-    # Print the upper half of the pattern
     for i in range(n, 0, -1):
         for j in range(n, i-1, -1):
             print(j, end=' ')
@@ -35,7 +34,6 @@ def print_pattern(n):
             print(k, end=' ')
         print()
     
-    # Print the lower half of the pattern
     for i in range(1, n):
         for j in range(n, i, -1):
             print(j, end=' ')
@@ -43,7 +41,6 @@ def print_pattern(n):
             print(k, end=' ')
         print()
 
-# Test the function
 n = 5
 print_pattern(n)
 
