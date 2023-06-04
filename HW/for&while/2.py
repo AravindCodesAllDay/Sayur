@@ -19,7 +19,7 @@ Sara - ...
 
 def seperateNames():
     employeeData = {}
-    employeeNames = input("Enter employee names (comma-separated): ").split(",")
+    employeeNames = input("Enter employee names : ").split(",")
     for name in employeeNames:
         sales = []
         for month in range(1, 5):
@@ -28,6 +28,7 @@ def seperateNames():
         employeeData[name] = sales
     return employeeData
 
+employeeData = seperateNames()
 
 def seperateEmployeeData(employeeData):
     sorted_names = sorted(employeeData.keys())
@@ -36,15 +37,7 @@ def seperateEmployeeData(employeeData):
         salesString = ", ".join(str(sale) for sale in sortedSales)
         print(f"{name} - {salesString}")
 
-
-# Get employee data from the user
-employee_data = seperateNames()
-
-# Sort and display the employee data
-seperateEmployeeData(employee_data)
-
-
-
+seperateEmployeeData(employeeData)
 
 
 '''
