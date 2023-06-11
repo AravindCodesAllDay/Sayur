@@ -2,19 +2,21 @@
 #find the list unique words in a sentence
 #hint - Each word is a key, count is the value
 
-def count_unique_words(sentence):
+def uniqueWords(sentence):
     words = sentence.split()
     wordCounts = {}
+
     for word in words:
+
         if word in wordCounts:
             wordCounts[word] += 1
         else:
             wordCounts[word] = 1
+            
     return wordCounts
 
 sentence = "This is a cat and it has a tail and two eyes"
-unique_words = count_unique_words(sentence)
-print(f'{unique_words}')
+print(f'{uniqueWords(sentence)}')
 
 
 #output:

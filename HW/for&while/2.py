@@ -18,20 +18,26 @@ Sara - ...
 
 
 def seperateNames():
+
     employeeData = {}
     employeeNames = input("Enter employee names : ").split(",")
+
     for name in employeeNames:
         sales = []
+
         for month in range(1, 5):
             sale = int(input(f"Enter phone sales for {name} in month {month}: "))
             sales.append(sale)
+
         employeeData[name] = sales
     return employeeData
 
 employeeData = seperateNames()
 
 def seperateEmployeeData(employeeData):
+
     sorted_names = sorted(employeeData.keys())
+    
     for name in sorted_names:
         sortedSales = sorted(employeeData[name])
         salesString = ", ".join(str(sale) for sale in sortedSales)
