@@ -31,6 +31,7 @@ def mostRating(hotels):
     return mostRatingHotel
 
 noOfHotels = int(input("Enter the number of hotels to register: "))#Get user input.
+print("\t\t\t---------------")
 hotels = []#store the instance in a list
 
 for i in range(noOfHotels):
@@ -39,6 +40,7 @@ for i in range(noOfHotels):
     name = input("Enter hotel name: ")
     rooms = int(input("Enter number of rooms: "))
     rating = float(input("Enter hotel rating: "))
+    print("\t\t\t---------------")
     
     #create a new instance of your class
     hotel = hotel(name, rooms, rating)

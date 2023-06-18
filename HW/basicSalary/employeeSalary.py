@@ -15,27 +15,28 @@ class Employee:
         self.name = name
         self.salaryPerHour = salaryPerHour
 
-    def calculate_salary(self, hoursWorked):
+    def calculateSalary(self, hoursWorked):
         return self.salaryPerHour * hoursWorked
 
 num_employees = int(input("Enter the number of employees: "))
+print("\t\t\t---------------")
 employees = []
 
 for i in range(num_employees):
     name = input("Enter employee name: ")
     salaryPerHour = float(input("Enter per hour salary for {}: ".format(name)))
+    print("\t\t\t---------------")
     employee = Employee(name, salaryPerHour)
-    #For each employee, get details from owner and store it in a list
     employees.append(employee)
 
 maxSalary = 0
 maxSalaryEmployee = None
 
 for employee in employees:
-    #For each employee, ask the no of hrs worked
     hours_worked = float(input("Enter the number of hours worked by {}: ".format(employee.name)))
+    print("\t\t\t---------------")
     #get input from owner
-    salary = employee.calculate_salary(hours_worked)
+    salary = employee.calculateSalary(hours_worked)
     if salary > maxSalary:
         #Calculate Salary
         maxSalary = salary
