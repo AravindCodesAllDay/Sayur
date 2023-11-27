@@ -10,3 +10,69 @@
 # Print the board each time after the user rolls and also print the current score.
 # Use functions
 
+import random
+
+board = {
+    1 : ['*'] * 6,
+    2 : ['*'] * 6,
+    3 : ['*'] * 6,
+    4 : ['*'] * 6,
+    5 : ['*'] * 6,
+    6 : ['*'] * 6
+}
+
+def roll(initial):
+    score = 0
+    rowDice = random.randrange(1,6)
+    colDice = random.randrange(1,6)
+
+    print(f'you rolled : ({rowDice},{colDice})')
+
+    if (board[rowDice][colDice-1] != '*' and board[rowDice][colDice-1] != initial):
+        board[rowDice][colDice-1] = initial
+        score = 1
+        return score
+    
+    board[rowDice][colDice-1] = initial
+    return score
+
+def printBoard():
+    cols = ''
+
+    for row in board.keys():
+
+        for col in board[row]:
+            cols += col + ' '
+
+        print(cols)
+        cols = ''
+
+
+def main():   
+
+    aScore = 0
+    bScore = 0
+    round = 1
+
+    while(aScore<5 and bScore<5):
+
+        print(f'Round-{round}')
+        printBoard()
+        print(f'A scored : {aScore}')
+        print(f'B scored : {bScore}')
+
+        if round%2 == 1:
+            a = input("Player A press enter to roll")
+            aScore += roll('a')
+        else:
+            b = input("Player B press enter to roll")
+            bScore += roll('b')
+
+        round += 1
+
+    if aScore==5:
+        print('A wins')
+    else:
+        print('B wins')
+
+main()
